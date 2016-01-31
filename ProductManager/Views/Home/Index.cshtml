@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProductManager.Models.Order>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Zarządzanie produkcją</h2>
+    
+    
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Dodaj produkt</h2>
+        <p>
+            Dodaj nowy produkt do bazy.
+        </p>
+
+        
+
+        <p><a class="btn btn-default" href="/Products/Create">Dodaj produkt &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Dodaj zamówienie</h2>
+        <p>Dodaj zamówienie do listy</p>
+        <p><a class="btn btn-default" href="/Orders/Create">Dodaj zamówienie &raquo;</a></p>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).on('click', '#create_new_product_modal', function () {
+        $('#add_modal').modal('show');
+    });
+    $(document).on('click', '.details', function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/Home/_Details/' + id,
+            success: function (data) {
+                $('#detail_modal_containter').html(data);
+                $('#details_modal').modal('show');
+            },
+            error: function () { alert('Bląd')}
+        });
+    });
+</script>

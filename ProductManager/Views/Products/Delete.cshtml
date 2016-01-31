@@ -1,0 +1,72 @@
+﻿@model ProductManager.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuń</h2>
+
+<h3>Czy na pewno chcesz usunąć @Html.DisplayFor(model => model.ProductName)?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductsDescryption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductsDescryption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductHeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do listy", "Index")
+        </div>
+    }
+</div>

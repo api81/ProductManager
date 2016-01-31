@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ProductManager.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista produktów</h2>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Szukaj w nazwie lub opisie: @Html.TextBox("SearchString")
+                    <input type="submit" value="Szukaj" />
+                </p>
+            }
+
+            <p>
+                @Html.ActionLink("Dodaj nowy produkt", "Create")
+            </p>
+
+
+        </div>
+        <div class="span10">
+            <table class="table table-hover">
+                <tr>
+                    <th>
+
+                        @Html.ActionLink(@Html.DisplayNameFor(model => model.ProductName).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+
+                        @Html.ActionLink(@Html.DisplayNameFor(model => model.ProductsDescryption).ToString(), "Index", new { sortOrder = ViewBag.DescrytionSortParm })
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductHeight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductWidth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductPrice)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@Html.DisplayFor(modelItem => item.ProductName).ToString(), "Details", new { id = item.ProductId })
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductsDescryption)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductHeight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductWidth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edycja", "Edit", new { id = item.ProductId }) |
+                            @Html.ActionLink("Szczegóły", "Details", new { id = item.ProductId }) |
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.ProductId })
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+
+            O co chodzi
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@using ProductManager.Models
+@using ProductManager.ViewModels
+@model IEnumerable<object>
+@{
+    List<ProductManager.Models.Product> product = Model.ToList()[0] as List<ProductManager.Models.Product>;
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+
