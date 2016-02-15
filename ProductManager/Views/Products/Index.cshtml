@@ -12,7 +12,7 @@
             {
                 <p>
                     Szukaj w nazwie lub opisie: @Html.TextBox("SearchString")
-                    <input type="submit" value="Szukaj" />
+                    <input type="submit"  value="Szukaj" />
                 </p>
             }
 
@@ -69,10 +69,23 @@
                             @Html.DisplayFor(modelItem => item.ProductPrice)
                         </td>
                         <td>
-                            @Html.ActionLink("Edycja", "Edit", new { id = item.ProductId }) |
-                            @Html.ActionLink("Szczegóły", "Details", new { id = item.ProductId }) |
-                            @Html.ActionLink("Usuń", "Delete", new { id = item.ProductId })
-                        </td>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                <a href="@Url.Action("Edit", new { id = item.ProductId })" class="btn btn-primary btn-xs">
+                                    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                                    Edycja
+                                </a>
+                                <a href="@Url.Action("Details", new { id = item.ProductId })" class="btn btn-warning btn-xs">
+                                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                                    Szczegóły
+                                </a>
+                                <a href="@Url.Action("Delete", new { id = item.ProductId })" class="btn btn-danger btn-xs">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    Usuń
+                                </a>
+                                
+                               
+                           </div>
+</td>
                     </tr>
 
                 }
